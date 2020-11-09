@@ -14,7 +14,7 @@ namespace AddressBook_ADO.Net_
             addressBookRepo.RetrieveFromDatabase();
             Console.WriteLine("-------------------------------------");
 
-            Console.WriteLine("1.Update Contact\n2.Get Contacts By Date Range");
+            Console.WriteLine("1.Update Contact\n2.Get Contacts By Date Range\n3.Get Count By City And State");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
@@ -32,6 +32,9 @@ namespace AddressBook_ADO.Net_
                     Console.WriteLine("Enter end date");
                     string endDate = Console.ReadLine();
                     addressBookRepo.GetContactsByDateRange(startDate, endDate);
+                    break;
+                case 3:
+                    addressBookRepo.GetCountByCityOrState();
                     break;
                 default:
                     Console.WriteLine("Invalid Option");

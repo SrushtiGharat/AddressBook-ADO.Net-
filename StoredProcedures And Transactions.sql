@@ -24,3 +24,9 @@ Inner Join Zip ON Contact.ZipCode = Zip.ZipCode
 where Date_Added between @StartDate and @EndDate
 
 end
+
+create or alter procedure SpGetCountByCityState
+as
+begin
+Select state,city,Count(CId) from Contact Inner Join Zip ON Contact.ZipCode = Zip.ZipCode group by city,state
+end

@@ -155,7 +155,45 @@ namespace AddressBook_ADO.Net_
                     {
                         Console.WriteLine("No such records found");
                     }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
+        public void GetCountByCityOrState()
+        {
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                using (connection)
+                {
+                    SqlCommand command = new SqlCommand("SpGetCountByCityState", this.connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    this.connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string state = reader.GetString(0);
+                            string city = reader.GetString(1);
+                            int count = reader.GetInt32(2);                            
+
+                            Console.WriteLine(state+"  "+city+"  "+count);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Table is empty");
+                    }
                 }
             }
             catch (Exception e)
