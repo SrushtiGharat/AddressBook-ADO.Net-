@@ -5,13 +5,13 @@ using System.Data.SqlClient;
 
 namespace AddressBook_ADO.Net_
 {
-    class AddressBookRepo
+    public class AddressBookRepo
     {
         string connectionString = @"Data Source=DESKTOP-QP0QMA4\SQLEXPRESS;Initial Catalog=address_book_service;Integrated Security=True";
         SqlConnection connection;
         List<Contact> contacList = new List<Contact>();
-
-        public void RetrieveFromDatabase()
+        int count;
+        public bool RetrieveFromDatabase()
         {
             connection = new SqlConnection(connectionString);
             try 
@@ -52,6 +52,7 @@ namespace AddressBook_ADO.Net_
                     {
                         Console.WriteLine("Table is empty");
                     }
+                    return true;
                 }
             
             }
@@ -63,6 +64,7 @@ namespace AddressBook_ADO.Net_
             {
                 connection.Close();
             }
+            return false;
         }
     }
 }
