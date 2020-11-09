@@ -14,7 +14,7 @@ namespace AddressBook_ADO.Net_
             addressBookRepo.RetrieveFromDatabase();
             Console.WriteLine("-------------------------------------");
 
-            Console.WriteLine("1.Update Contact");
+            Console.WriteLine("1.Update Contact\n2.Get Contacts By Date Range");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
@@ -25,6 +25,13 @@ namespace AddressBook_ADO.Net_
                     Console.WriteLine("Enter phone no");
                     string phoneNo = Console.ReadLine();
                     addressBookRepo.UpdateContact(name, phoneNo);
+                    break;
+                case 2:
+                    Console.WriteLine("Enter start date");
+                    string startDate = Console.ReadLine();
+                    Console.WriteLine("Enter end date");
+                    string endDate = Console.ReadLine();
+                    addressBookRepo.GetContactsByDateRange(startDate, endDate);
                     break;
                 default:
                     Console.WriteLine("Invalid Option");

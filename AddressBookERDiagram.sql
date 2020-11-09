@@ -74,3 +74,10 @@ Select Type,FirstName,LastName,Address,Contact.ZipCode,PhoneNo,Email,City,State
                                     from AddressBook Inner JOIN  AddressBookContact On AddressBook.BookId = AddressBookContact.BookId
                                     INNER JOIN Contact ON AddressBookContact.CId = Contact.CId
                                     Inner Join Zip ON Contact.ZipCode = Zip.ZipCode;
+
+Alter table Contact add Date_Added Date
+Update Contact set Date_Added = '2020-02-10' where FirstName = 'Ram' or FirstName = 'Ravi'
+Update Contact set Date_Added = '2019-03-08' where FirstName = 'Riya' or FirstName = 'Seeta'
+Update Contact set Date_Added = '2018-04-11' where FirstName = 'Shyam' 
+
+select * from Contact
