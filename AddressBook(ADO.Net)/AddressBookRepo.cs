@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace AddressBook_ADO.Net_
 {
@@ -9,8 +10,11 @@ namespace AddressBook_ADO.Net_
     {
         string connectionString = @"Data Source=DESKTOP-QP0QMA4\SQLEXPRESS;Initial Catalog=address_book_service;Integrated Security=True";
         SqlConnection connection;
-        List<Contact> contacList = new List<Contact>();
-        int count;
+
+        /// <summary>
+        /// Get all contacts from database
+        /// </summary>
+        /// <returns>True Or False</returns>
         public bool RetrieveFromDatabase()
         {
             connection = new SqlConnection(connectionString);
@@ -42,8 +46,6 @@ namespace AddressBook_ADO.Net_
                             c.City = reader.GetString(7);
                             c.State = reader.GetString(8);
 
-                            contacList.Add(c);
-
                             Console.WriteLine(c.Type + "  " + c.FirstName + "  " + c.LastName + "  " + c.Address + "  " + c.ZipCode + "  " +
                                 c.City + "  " + c.State + "  " + c.PhoneNo + "  " + c.Email);
                         }
@@ -53,10 +55,51 @@ namespace AddressBook_ADO.Net_
                         Console.WriteLine("Table is empty");
                     }
                     return true;
-                }
-            
+                }            
             }
             catch(Exception e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Update phone No Given FullName
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="phoneNo"></param>
+        /// <returns></returns>
+        public bool UpdateContact(string[] name,string phoneNo)
+        { 
+            connection = new SqlConnection(connectionString);
+            try 
+            {
+                using (connection)
+                {
+                    SqlCommand command = new SqlCommand("SpUpdateDetails", this.connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@FirstName", name[0]);
+                    command.Parameters.AddWithValue("@LastName", name[1]);
+                    command.Parameters.AddWithValue("@PhoneNo", phoneNo);
+
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    if(result == 0)
+                    {
+                        Console.WriteLine("No such contact");
+                        return false;
+                    }
+                    Console.WriteLine("Contact updated successfully");
+                    return true;
+                }
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
