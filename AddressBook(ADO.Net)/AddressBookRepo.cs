@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Data;
 
 namespace AddressBook_ADO.Net_
 {
@@ -55,6 +56,60 @@ namespace AddressBook_ADO.Net_
                         Console.WriteLine("Table is empty");
                     }
                     return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Add contact to database
+        /// </summary>
+        /// <param name="contact"></param>
+        public bool AddContact(Contact contact)
+        {
+            connection = new SqlConnection(connectionString);
+            try
+            {
+                using (connection)
+                {
+                    SqlCommand command = new SqlCommand("SpAddContactDetails", this.connection);
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("@FirstName", contact.FirstName);
+                    command.Parameters.AddWithValue("@LastName", contact.LastName);
+                    command.Parameters.AddWithValue("@PhoneNo", contact.PhoneNo);
+                    command.Parameters.AddWithValue("@Address", contact.Address);
+                    command.Parameters.AddWithValue("@ZipCode", contact.ZipCode);
+                    command.Parameters.AddWithValue("@City", contact.City);
+                    command.Parameters.AddWithValue("@State", contact.State);
+                    command.Parameters.AddWithValue("@Email", contact.Email);
+                    command.Parameters.AddWithValue("@Type", contact.Type);
+                    command.Parameters.AddWithValue("@Date", DateTime.Today);
+                    command.Parameters.Add("@CId", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    this.connection.Close();
+
+                    if(result != 0)
+                    {
+                        Console.WriteLine("Employee added successfully");
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Addition failed");
+                        return false;
+                    }
+
                 }
             }
             catch (Exception e)
@@ -167,6 +222,9 @@ namespace AddressBook_ADO.Net_
             }
         }
 
+        /// <summary>
+        /// Get count of contacts by city and state
+        /// </summary>
         public void GetCountByCityOrState()
         {
             connection = new SqlConnection(connectionString);

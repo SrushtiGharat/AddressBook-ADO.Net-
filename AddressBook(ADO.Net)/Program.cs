@@ -14,7 +14,7 @@ namespace AddressBook_ADO.Net_
             addressBookRepo.RetrieveFromDatabase();
             Console.WriteLine("-------------------------------------");
 
-            Console.WriteLine("1.Update Contact\n2.Get Contacts By Date Range\n3.Get Count By City And State");
+            Console.WriteLine("1.Update Contact\n2.Get Contacts By Date Range\n3.Get Count By City And State\n4.Add Contact To Database");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
@@ -35,6 +35,28 @@ namespace AddressBook_ADO.Net_
                     break;
                 case 3:
                     addressBookRepo.GetCountByCityOrState();
+                    break;
+                case 4:
+                    Contact c = new Contact();
+                    Console.WriteLine("Enter Contact Type");
+                    c.Type = Console.ReadLine();
+                    Console.WriteLine("Enter First Name");
+                    c.FirstName = Console.ReadLine();
+                    Console.WriteLine("Enter Last Name");
+                    c.LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Address");
+                    c.Address = Console.ReadLine();
+                    Console.WriteLine("Enter ZipCode");
+                    c.ZipCode = Console.ReadLine();
+                    Console.WriteLine("Enter City");
+                    c.City= Console.ReadLine();
+                    Console.WriteLine("Enter State");
+                    c.State = Console.ReadLine();
+                    Console.WriteLine("Enter PhoneNo");
+                    c.PhoneNo = Console.ReadLine();
+                    Console.WriteLine("Enter Email");
+                    c.Email = Console.ReadLine();
+                    addressBookRepo.AddContact(c);
                     break;
                 default:
                     Console.WriteLine("Invalid Option");

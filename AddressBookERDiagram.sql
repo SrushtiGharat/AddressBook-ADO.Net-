@@ -80,4 +80,3 @@ Update Contact set Date_Added = '2020-02-10' where FirstName = 'Ram' or FirstNam
 Update Contact set Date_Added = '2019-03-08' where FirstName = 'Riya' or FirstName = 'Seeta'
 Update Contact set Date_Added = '2018-04-11' where FirstName = 'Shyam' 
 
-select * from Contact
