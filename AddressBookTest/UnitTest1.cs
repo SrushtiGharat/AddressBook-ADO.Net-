@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AddressBook_ADO.Net_;
+using System.Collections.Generic;
 
 namespace AddressBookTest
 {
@@ -56,6 +57,22 @@ namespace AddressBookTest
             bool result = addressBookRepo.AddContact(c);
 
             Assert.AreEqual(result, true);
+        }
+        [TestMethod]
+        public void Given_MultipleContactInfo_WhenAddedToDatabaseUsingThreads_Should_Return_NoOfContactsAdded()
+        {
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            List<Contact> contactList = new List<Contact>();
+
+            contactList.Add( new Contact(FirstName: "Shreya", LastName : "Pandey",Address: "14-Grace Pinnacle", ZipCode: "300203",
+            City: "Hyderabad", State: "Telangana", PhoneNo: "9823439977",  Email: "shreya@gmail.com", Type: "Professional"));
+            
+            contactList.Add(new Contact(FirstName: "Raju", LastName: "Naik", Address: "12-Arcade Colony", ZipCode: "401602",
+            City: "Ahmedabad", State: "Gujarat", PhoneNo: "7028827730", Email: "raju@gmail.com", Type: "Professional"));
+
+            int result = addressBookRepo.AddMultipleContactsWithThread(contactList);
+
+            Assert.AreEqual(2, result);
         }
     }
 }

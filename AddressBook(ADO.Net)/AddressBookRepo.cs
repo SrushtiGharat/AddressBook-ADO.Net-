@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace AddressBook_ADO.Net_
 {
@@ -67,6 +66,28 @@ namespace AddressBook_ADO.Net_
                 connection.Close();
             }
             return false;
+        }
+
+        /// <summary>
+        /// Add multiple contacts to AddressBook using threads
+        /// </summary>
+        /// <param name="contactList"></param>
+        /// <returns>No of contacts added</returns>
+        public int AddMultipleContactsWithThread(List<Contact> contactList)
+        {
+            int count = 0;
+            contactList.ForEach(contact =>
+            {
+                count++;
+                Task task = new Task(() =>
+                {
+                    AddContact(contact);
+                }
+                );
+                task.Start();
+            }
+            );
+            return count;
         }
 
         /// <summary>
