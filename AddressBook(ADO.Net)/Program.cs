@@ -67,7 +67,7 @@ namespace AddressBook_ADO.Net_
                         if (ans.ToUpper() == "NO")
                             break;
                     }
-                   
+                    addressBookRepo.AddMultipleContactsWithThread(contactList);
                     break;
                 default:
                     Console.WriteLine("Invalid Option");
