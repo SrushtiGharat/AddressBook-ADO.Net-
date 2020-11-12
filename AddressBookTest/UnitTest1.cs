@@ -65,10 +65,10 @@ namespace AddressBookTest
             List<Contact> contactList = new List<Contact>();
 
             contactList.Add( new Contact(FirstName: "Shreya", LastName : "Pandey",Address: "14-Grace Pinnacle", ZipCode: "300203",
-            City: "Hyderabad", State: "Telangana", PhoneNo: "9823439977",  Email: "shreya@gmail.com", Type: "Professional"));
+            City: "Hyderabad", State: "Telangana", PhoneNo: "9823439977",  Email: "shreya@gmail.com", Type: "Profession"));
             
             contactList.Add(new Contact(FirstName: "Raju", LastName: "Naik", Address: "12-Arcade Colony", ZipCode: "401602",
-            City: "Ahmedabad", State: "Gujarat", PhoneNo: "7028827730", Email: "raju@gmail.com", Type: "Professional"));
+            City: "Ahmedabad", State: "Gujarat", PhoneNo: "7028827730", Email: "raju@gmail.com", Type: "Profession"));
 
             int result = addressBookRepo.AddMultipleContactsWithThread(contactList);
 
