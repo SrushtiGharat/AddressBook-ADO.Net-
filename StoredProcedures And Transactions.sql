@@ -46,8 +46,7 @@ create or alter procedure SpAddContactDetails
 @PhoneNo varchar(15),
 @Email varchar(25),
 @Type varchar(15),
-@Date date,
-@CId int out
+@Date date
 )
 as
 begin
@@ -55,7 +54,7 @@ set XACT_ABORT on;
 begin try
 begin TRANSACTION;
 
-IF(select ZipCode from Zip Where ZipCode = @ZipCode)=0
+IF NOT EXISTS(select ZipCode from Zip Where ZipCode = @ZipCode)
 BEGIN
 insert into Zip values
 (
