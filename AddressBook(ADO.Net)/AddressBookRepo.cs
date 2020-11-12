@@ -85,6 +85,7 @@ namespace AddressBook_ADO.Net_
                 }
                 );
                 task.Start();
+                task.Wait();
             }
             );
             return count;
@@ -114,7 +115,6 @@ namespace AddressBook_ADO.Net_
                     command.Parameters.AddWithValue("@Email", contact.Email);
                     command.Parameters.AddWithValue("@Type", contact.Type);
                     command.Parameters.AddWithValue("@Date", DateTime.Today);
-                    command.Parameters.Add("@CId", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                     this.connection.Open();
                     var result = command.ExecuteNonQuery();
