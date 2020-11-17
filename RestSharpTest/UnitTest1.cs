@@ -93,5 +93,18 @@ namespace RestSharpTest
             Assert.AreEqual("Ravi", dataResponse.FirstName);
             Assert.AreEqual("ravi@gmail.com", dataResponse.Email);
         }
+
+        /// <summary>
+        /// Delete contact details
+        /// </summary>
+        [TestMethod]
+        public void Given_ContactId_WhenDeleted_ShouldReturn_StatusOK()
+        {
+            RestRequest request = new RestRequest("/Contacts/11", Method.DELETE);
+
+            IRestResponse response = client.Execute(request);
+
+            Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.OK);
+        }
     }
 }

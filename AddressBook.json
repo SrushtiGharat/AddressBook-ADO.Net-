@@ -119,18 +119,6 @@
       "Email": "sara@gmail.com",
       "Type": "Friends",
       "id": 10
-    },
-    {
-      "FirstName": "Rohit",
-      "LastName": "Sankhe",
-      "Address": "27-Dalal Tower",
-      "ZipCode": "401501",
-      "City": "Mumbai",
-      "State": "Maharashtra",
-      "PhoneNo": "9999988888",
-      "Email": "rohit@gmail.com",
-      "Type": "Profession",
-      "id": 11
     }
   ]
 }
