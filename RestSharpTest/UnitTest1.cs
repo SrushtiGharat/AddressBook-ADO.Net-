@@ -74,5 +74,24 @@ namespace RestSharpTest
 
             Assert.AreEqual(11, dataResponse.Count);
         }
+
+        /// <summary>
+        /// Update contact information
+        /// </summary>
+        [TestMethod]
+        public void Given_NewEmailAddress_ShouldReturn_UpdatedContact()
+        {
+            RestRequest request = new RestRequest("/Contacts/3", Method.PATCH);
+            JObject jObjectBody = new JObject();
+            jObjectBody.Add("Email", "ravi@gmail.com");
+            request.AddParameter("application/json", jObjectBody, ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+
+            Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.OK);
+            Contact dataResponse = JsonConvert.DeserializeObject<Contact>(response.Content);
+            Assert.AreEqual("Ravi", dataResponse.FirstName);
+            Assert.AreEqual("ravi@gmail.com", dataResponse.Email);
+        }
     }
 }
