@@ -1,0 +1,105 @@
+{
+"Contacts" :
+[
+  {
+    "FirstName": "Ram",
+    "LastName": "Singh",
+    "ZipCode": "400500",
+    "PhoneNo": "9999999999",
+    "Email": "ramsingh@gmail.com",
+    "Address": "23-River Park",
+    "City": "Mumbai",
+    "State": "Maharashtra",
+    "Type": "Friends"
+  },
+  {
+    "FirstName": "Seeta",
+    "LastName": "Yadav",
+    "ZipCode": "400503",
+    "PhoneNo": "6666666666",
+    "Email": "seetasingh@gmail.com",
+    "Address": "02-Green Tower",
+    "City": "Mumbai",
+    "State": "Maharashtra",
+    "Type": "Friends"
+  },
+  {
+    "FirstName": "Ravi",
+    "LastName": "Pandey",
+    "ZipCode": "500300",
+    "PhoneNo": "8888888888",
+    "Email": "ravipandey@gmail.com",
+    "Address": "17-Orchids Colony",
+    "City": "Bangalore",
+    "State": "Karnataka",
+    "Type": "Family"
+  },
+  {
+    "FirstName": "Shyam",
+    "LastName": "Patil",
+    "ZipCode": "500300",
+    "PhoneNo": "7777777777",
+    "Email": "shyampatil@gmail.com",
+    "Address": "20-Shastri Nagar",
+    "City": "Bangalore",
+    "State": "Karnataka",
+    "Type": "Profession"
+  },
+  {
+    "FirstName": "Riya",
+    "LastName": "Sharma",
+    "ZipCode": "300200",
+    "PhoneNo": "444444444",
+    "Email": "riyasharma@gmail.com",
+    "Address": "32-Street Road",
+    "City": "Hyderabad",
+    "State": "Telangana",
+    "Type": "Profession"
+  },
+  {
+    "FirstName": "Manasi",
+    "LastName": "Rathi",
+    "ZipCode": "400500",
+    "PhoneNo": "5555555555",
+    "Email": "manasi@gmail.com",
+    "Address": "04-Sai Nagar",
+    "City": "Mumbai",
+    "State": "Maharashtra",
+    "Type": "Family"
+  },
+  {
+    "FirstName": "Rekha",
+    "LastName": "Sharma",
+    "ZipCode": "500305",
+    "PhoneNo": "8766547899",
+    "Email": "rekha@gmail.com",
+    "Address": "11-Novelty Colony",
+    "City": "Bangalore",
+    "State": "Karnataka",
+    "Type": "Family"
+  },
+  {
+    "FirstName": "Shreya",
+    "LastName": "Pandey",
+    "ZipCode": "300200",
+    "PhoneNo": "9823439977",
+    "Email": "shreya@gmail.com",
+    "Address": "14-Grace Pinnacle",
+    "City": "Hyderabad",
+    "State": "Telangana",
+    "Type": "Profession"
+  },
+  {
+    "FirstName": "Raju",
+    "LastName": "Naik",
+    "ZipCode": "401602",
+    "PhoneNo": "7028827730",
+    "Email": "raju@gmail.com",
+    "Address": "12-Arcade Colony",
+    "City": "Ahmedabad",
+    "State": "Gujarat",
+    "Type": "Profession"
+  }
+
+]
+}
